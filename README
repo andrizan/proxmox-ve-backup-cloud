@@ -5,6 +5,7 @@ https://www.apalrd.net/posts/2022/pve_backup/
 - https://www.youtube.com/watch?v=aFDX2CDTJCE
 
 === add script to jobs.cfg ===
+chmod +x gs-vzdump.pl gcscleanup.sh
 nano /etc/pve/jobs.cfg
 
 `
