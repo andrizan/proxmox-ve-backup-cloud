@@ -13,7 +13,7 @@ gsutil ls gs://$1 | grep " DIR " -v | while read -r line;
         if [ $fileName != "" ]
           then
             printf 'Deleting "%s"\n' $fileName
-            s3cmd rm "$fileName"
+            gsutil rm "$fileName"
         fi
     fi
   done;
