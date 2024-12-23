@@ -72,7 +72,7 @@ if (    $phase eq 'job-init'  ||
         # During backup-end, copy the target file to GCS and delete the original on the system
         if ($phase eq 'backup-end') {
                 #GCS put
-                my $result = system ("gsutil cp $tarfile gs://$bucket/");
+                my $result = system ("gsutil -o \"GSUtil:parallel_composite_upload_threshold=150M\" cp $tarfile gs://$bucket/");
                 #rm original
                 system ("rm $tarfile");
                 #Die of error returned
@@ -83,7 +83,7 @@ if (    $phase eq 'job-init'  ||
 
         # During log-end, copy the log file to GCS and delete the original on the system (same as target file)
         if ($phase eq 'log-end') {
-                my $result = system ("gsutil cp $logfile gs://$bucket/");
+                my $result = system ("gsutil -o \"GSUtil:parallel_composite_upload_threshold=150M\" cp $logfile gs://$bucket/");
                 system ("rm $logfile");
                 if($result != 0) {
                         die "upload logfile failed";
